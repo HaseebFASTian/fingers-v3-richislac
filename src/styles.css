@@ -741,46 +741,181 @@ textarea:focus-visible {
   fill: currentColor;
 }
 .why-section {
-  padding-bottom: 30px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #e9e8df;
+  padding-block: clamp(48px, 5vw, 76px);
+}
+.everyday-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.everyday-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.everyday-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #fff9edee 0%,
+    #fff9edb8 35%,
+    #fff9ed08 75%
+  );
+}
+.everyday-heading {
+  max-width: 650px;
+  margin-bottom: clamp(38px, 4.3vw, 66px);
+}
+.everyday-heading .eyebrow {
+  color: #365e7c;
+  margin-bottom: 17px;
+}
+.everyday-heading h2 {
+  max-width: 630px;
+  font-size: clamp(44px, 4.7vw, 72px);
+  line-height: 1.12;
+}
+.everyday-heading h2 span {
+  display: block;
+  color: var(--blue);
+}
+.everyday-intro {
+  margin-top: 20px;
+  color: #294a63;
+  font-size: 18px;
 }
 .reason-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 .reason {
   position: relative;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 228px;
+  padding: 24px 132px 22px 24px;
+  border: 1px solid #fff9ed;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--tone) 62%, #fffdf6);
+  text-align: left;
+  transition: transform 250ms var(--ease);
+  overflow: hidden;
+}
+.reason-pack {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.065em;
+  color: #365a77;
+  margin-bottom: 10px;
 }
 .reason h3 {
   font-family: var(--display);
-  font-size: 25px;
+  font-size: clamp(22px, 1.7vw, 27px);
+  line-height: 1.2;
   font-weight: 400;
-  border-radius: 70px;
-  background: var(--tone);
-  padding: 22px 12px;
 }
 .reason p {
-  font-size: 15px;
-  line-height: 1.6;
-  border-radius: 70px;
-  background: var(--tone);
-  padding: 22px 12px;
-  margin-top: 3px;
-  min-height: 100px;
-  display: grid;
-  place-content: center;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 12px 0 16px;
+  color: #254969;
 }
-.reason > .icon {
+.reason-link {
+  align-self: flex-start;
+  margin-top: auto;
+  font-size: 13px;
+  font-weight: 600;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #3a608575;
+}
+.reason img {
   position: absolute;
-  right: 15px;
-  bottom: -18px;
-  border-radius: 50%;
-  background: var(--yellow);
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  transform: rotate(15deg);
+  width: 148px;
+  height: 192px;
+  object-fit: contain;
+  right: -8px;
+  bottom: 8px;
+  transform: rotate(6deg);
+  transition: transform 250ms var(--ease);
+  pointer-events: none;
+}
+.reason.sun img {
+  transform: rotate(-6deg);
+}
+@media (hover: hover) {
+  .reason:hover {
+    transform: translateY(-5px);
+  }
+  .reason:hover img {
+    transform: rotate(0) translateY(-3px);
+  }
+}
+.reason:active {
+  transform: scale(0.985);
+}
+.reason:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 4px;
+}
+@media (min-width: 601px) and (max-width: 1100px) {
+  .why-section {
+    background: var(--cream);
+  }
+  .everyday-backdrop img {
+    height: 430px;
+    object-position: right center;
+  }
+  .everyday-backdrop::after {
+    background:
+      linear-gradient(90deg, #fff9edef, #fff9ed6e 50%, #fff9ed00 100%),
+      linear-gradient(180deg, #fff9ed00 220px, #fff9ed 430px);
+  }
+  .reason-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .reason-pack {
+    font-size: 10px;
+  }
+  .reason:last-child {
+    grid-column: 1 / -1;
+    min-height: 180px;
+    padding-right: 190px;
+  }
+  .reason:last-child img {
+    width: 180px;
+    height: 164px;
+    right: 18px;
+  }
+}
+@media (min-width: 601px) and (max-width: 740px) {
+  .reason-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .reason,
+  .reason:last-child {
+    min-height: 154px;
+    padding: 18px 150px 18px 22px;
+  }
+  .reason p {
+    margin: 8px 0 12px;
+  }
+  .reason img,
+  .reason:last-child img {
+    width: 150px;
+    height: 142px;
+    right: 0;
+  }
 }
 .bottle-story {
   padding-top: 65px;
@@ -2198,42 +2333,64 @@ dialog.is-closing {
     min-height: 0;
   }
   .why-section {
-    padding-bottom: 12px;
+    padding-block: 34px 30px;
+  }
+  .everyday-backdrop img {
+    height: 255px;
+    object-position: 70% center;
+  }
+  .everyday-backdrop::after {
+    background:
+      linear-gradient(90deg, #fff9edf2, #fff9ed8f 48%, #fff9ed00 100%),
+      linear-gradient(180deg, #fff9ed00 150px, #fff9ed 270px);
+  }
+  .everyday-heading {
+    max-width: 290px;
+    margin-bottom: 40px;
+  }
+  .everyday-heading .eyebrow {
+    max-width: 230px;
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+  .everyday-heading h2 {
+    font-size: clamp(34px, 8vw, 44px);
+    max-width: 280px;
+  }
+  .everyday-intro {
+    font-size: 14px;
+    max-width: 200px;
+    margin-top: 12px;
   }
   .reason-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
   .reason {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 3px;
+    min-height: 144px;
+    padding: 17px 106px 16px 18px;
+    border-radius: 20px;
+  }
+  .reason-pack {
+    font-size: 10px;
+    margin-bottom: 5px;
   }
   .reason h3 {
     font-size: 19px;
-    display: grid;
-    place-content: center;
-    line-height: 1.2;
-    padding: 15px 12px;
-    border-radius: 25px;
   }
   .reason p {
-    min-height: 85px;
-    margin-top: 0;
-    padding: 15px 12px;
+    margin: 8px 0 10px;
+    font-size: 13px;
+  }
+  .reason-link {
     font-size: 12px;
-    border-radius: 25px;
+    padding-bottom: 1px;
   }
-  .reason p br {
-    display: none;
-  }
-  .reason > .icon {
-    width: 30px;
-    height: 30px;
-    right: auto;
-    left: -5px;
-    bottom: -5px;
-    padding: 7px;
+  .reason img {
+    width: 126px;
+    height: 140px;
+    right: -13px;
+    bottom: 8px;
   }
   .bottle-story {
     padding-top: 35px;

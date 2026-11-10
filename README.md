@@ -22,6 +22,8 @@ The reference screenshot and video informed the oversized typography, bottle ent
 
 Sections: animated hero; circular product previews; full product line-up; everyday uses; annotated milk bottle; sharing banner; everyday moments; Richislac brand story and family links; business enquiries and catalogue; five FAQs; saved products and enquiry form; company locations; footer.
 
+The everyday section pairs a static breakfast photograph with three pack-specific links. It uses three columns on desktop, a two-plus-one layout on tablets and compact stacked cards on phones.
+
 The approved **CATALOGUE 5 FINGERS.pdf**, page 3, and the corporate site's product data agree on three products. All are displayed without pagination:
 
 | Product                     | Pack       |

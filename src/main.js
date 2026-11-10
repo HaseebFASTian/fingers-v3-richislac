@@ -338,6 +338,7 @@ function updateNavigation() {
   });
   const aliases = {
     explore: "range",
+    everyday: "moments",
     business: "contact",
     faq: "contact",
     locations: "contact",
@@ -347,7 +348,7 @@ function updateNavigation() {
   navLinks.forEach((a) => {
     const current = a.closest(".bottom-nav")
       ? aliases[active] || active
-      : active === "explore"
+      : active === "explore" || active === "everyday"
         ? "range"
         : active;
     const isActive = a.hash === `#${current}`;

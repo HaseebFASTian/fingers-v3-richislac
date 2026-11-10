@@ -31,3 +31,11 @@ Prompt specification: A premium studio lifestyle photograph with two adult hands
 ## Existing brand assets
 
 The Richislac, Farm Fresh, Neurela and 5 Fingers logos were copied from the approved corporate project. The three catalogue product images were also reused from that project. No logo artwork was redrawn.
+
+## Everyday breakfast background
+
+File: `public/assets/everyday-breakfast-background.webp` — 1774 × 887. Created with the built-in Image Gen tool, exported to WebP at quality 86. The scene is static; no parallax, video or background animation is applied.
+
+Prompt specification: Create a wide, approximately 2:1, photorealistic commercial dairy breakfast scene in an airy sunlit kitchen. Keep the left 60 percent calm with a warm ivory plaster wall, ivory stone table and soft morning shadows, leaving space for dark navy website copy. Arrange a clear glass jug of milk, glass of milk, cream ceramic cereal bowl and golden toast on a plate in the middle-right. Add muted blue linen, delicate sage greenery and a softly blurred garden window. Use a table-height three-quarter camera angle, realistic texture, dimensional natural light and subtle glass reflections. Keep all objects in frame. Palette: ivory, milk white, soft sky blue, tiny natural green and golden toast accents. No people, text, typography, logos, branded packaging, watermarks, pink or purple. Render only the photographic scene, not a website mockup.
+
+The three links in this section reuse the approved Richislac bottle, carton and whey drink pack artwork. Their images and text remain separate HTML elements so the entire card is accessible and responsive.

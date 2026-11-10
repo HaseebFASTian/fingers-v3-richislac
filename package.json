@@ -1,0 +1,12 @@
+{
+  "name": "fingers-v3-richislac",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/server.mjs",
+    "check": "node --check src/main.js && node --check src/motion.js && node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "deploy": "npm run build && npx --yes wrangler@4.159.0 pages deploy dist --project-name=fingers-v3-richislac --branch=main"
+  }
+}

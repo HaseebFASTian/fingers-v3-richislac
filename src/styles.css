@@ -684,6 +684,7 @@ textarea:focus-visible {
   min-height: 49px;
 }
 .product-top h3 {
+  text-transform: uppercase;
   font-family: var(--display);
   font-size: 22px;
   font-weight: 400;

@@ -79,8 +79,8 @@ export function initMotion() {
       entranceDone = true;
       return;
     }
-    const mobile = innerWidth <= 600;
-    const duration = mobile ? 900 : 1350;
+    const mobile = innerWidth <= 900;
+    const duration = mobile ? 300 : 1350;
     animate(
       bottle,
       [
@@ -95,7 +95,11 @@ export function initMotion() {
         { transform: "translateX(-50%) scale(.65)", opacity: 0 },
         { transform: "translateX(-50%) scale(1)", opacity: 1 },
       ],
-      { duration: 1050, delay: mobile ? 220 : 500, fill: "backwards" },
+      {
+        duration: mobile ? 300 : 1050,
+        delay: mobile ? 60 : 500,
+        fill: "backwards",
+      },
     );
     [...document.querySelectorAll(".hero h1 span")].forEach((word, i) =>
       animate(
@@ -105,8 +109,8 @@ export function initMotion() {
           { transform: "translateY(0) rotate(0)", opacity: 1 },
         ],
         {
-          duration: 850,
-          delay: (mobile ? 280 : 650) + i * 130,
+          duration: mobile ? 280 : 850,
+          delay: (mobile ? 40 : 650) + i * (mobile ? 40 : 130),
           fill: "backwards",
         },
       ),
@@ -122,13 +126,20 @@ export function initMotion() {
             { opacity: 0, transform: "translateY(14px)" },
             { opacity: 1, transform: "translateY(0)" },
           ],
-          { duration: 650, delay: 650 + i * 60, fill: "backwards" },
+          {
+            duration: mobile ? 260 : 650,
+            delay: mobile ? 80 : 650 + i * 60,
+            fill: "backwards",
+          },
         ),
       );
-    setTimeout(() => {
-      entranceDone = true;
-      schedule();
-    }, 1800);
+    setTimeout(
+      () => {
+        entranceDone = true;
+        schedule();
+      },
+      mobile ? 400 : 1800,
+    );
   };
   Promise.all([bottle.decode().catch(() => {}), document.fonts.ready]).then(
     start,
@@ -148,7 +159,13 @@ export function initMotion() {
               { opacity: 0.15, transform: "translateY(28px)" },
               { opacity: 1, transform: "translateY(0)" },
             ],
-            { duration: 650, delay: Math.min(index * 65, 190) },
+            {
+              duration: innerWidth <= 900 ? 260 : 650,
+              delay:
+                innerWidth <= 900
+                  ? Math.min(index * 35, 70)
+                  : Math.min(index * 65, 190),
+            },
           );
         });
       },

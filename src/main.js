@@ -44,10 +44,7 @@ function renderProducts() {
     const card = node("article", "product-card reveal");
     card.id = `product-${product.id}`;
     const top = node("div", "product-top");
-    top.append(
-      node("h3", "", product.name.toUpperCase()),
-      node("span", "", product.size),
-    );
+    top.append(node("h3", "", product.name), node("span", "", product.size));
     const art = node("button", "product-art");
     art.type = "button";
     art.dataset.product = product.id;
@@ -331,6 +328,7 @@ const navLinks = $$(".desktop-nav a,.bottom-nav a,#menu-dialog nav a");
 const observedSections = $$("main>section[id]");
 let pendingScroll = false;
 function updateNavigation() {
+  $(".site-header").classList.toggle("is-scrolled", scrollY > 12);
   let active = "home";
   const line = innerHeight * 0.34;
   observedSections.forEach((section) => {
@@ -345,12 +343,21 @@ function updateNavigation() {
     story: "moments",
     about: "moments",
   };
+  const menuAliases = {
+    explore: "range",
+    everyday: "moments",
+    story: "about",
+    faq: "contact",
+    locations: "contact",
+  };
   navLinks.forEach((a) => {
     const current = a.closest(".bottom-nav")
       ? aliases[active] || active
-      : active === "explore" || active === "everyday"
-        ? "range"
-        : active;
+      : a.closest("#menu-dialog")
+        ? menuAliases[active] || active
+        : active === "explore" || active === "everyday"
+          ? "range"
+          : active;
     const isActive = a.hash === `#${current}`;
     a.classList.toggle("active", isActive);
     if (isActive) a.setAttribute("aria-current", "location");
@@ -368,6 +375,7 @@ addEventListener(
   },
   { passive: true },
 );
+addEventListener("resize", updateNavigation, { passive: true });
 if (visualViewport) {
   const keyboard = () => {
     const editing = document.activeElement?.matches("input,textarea");

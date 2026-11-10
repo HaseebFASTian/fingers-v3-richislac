@@ -40,6 +40,7 @@ The approved **CATALOGUE 5 FINGERS.pdf**, page 3, and the corporate site's produ
 - CSS handles gentle floating; scroll transforms use a single requestAnimationFrame callback and never intercept scrolling.
 - Pause motion is persistent. Reduced-motion preferences disable animation. Background tabs stop decorative animation.
 - Mobile includes a drawer, bottom navigation, product bottom sheets, safe-area padding and 44px touch targets.
+- Mobile layouts use a compact bottle hero, two-column product cards, readable pack information, a shorter brand/business story and card-based FAQs and locations. Responsive rules live in `src/mobile.css`; desktop styling stays separate. Mobile entrance and reveal effects run in 260–300 ms and honour the existing motion controls.
 - Saved product IDs persist locally. Form details are kept in the current page only.
 - The enquiry form validates, previews and downloads a text file. **It does not send a message, create an order or take payment.** Connect the approved business contact service in a future integration.
 
@@ -48,6 +49,7 @@ The approved **CATALOGUE 5 FINGERS.pdf**, page 3, and the corporate site's produ
 - `index.html`: semantic content and section structure.
 - `src/styles.css`: responsive visual system and interactive components.
 - `src/brand-sections.css`: brand story and locations.
+- `src/mobile.css`: phone/tablet layouts, app navigation and mobile interaction styling.
 - `src/main.js`: product details, saved items, navigation and enquiry preview.
 - `src/motion.js`: entrance choreography, scroll motion and accessibility controls.
 - `public/assets/`: local brand artwork and optimized WebP images.

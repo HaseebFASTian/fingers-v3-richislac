@@ -59,8 +59,10 @@ This is a separate Cloudflare Pages **Direct Upload** project; a Git push by its
 
 ```sh
 npm run check
-npx wrangler@4.159.0 whoami
+npx wrangler@4.45.0 whoami
 npm run deploy
 ```
 
 Production project: `fingers-v3-richislac`, branch `main`, output `dist`. Authenticate using the existing Cloudflare account with Pages permissions. Credentials and `.env` files must never be committed. Other websites have independent folders and repositories.
+
+Wrangler is pinned to 4.45.0 to use the Pages deployment commands directly; newer CLI versions may delegate new-project setup to Workers.
